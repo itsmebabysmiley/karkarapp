@@ -7,15 +7,14 @@ class RoundInput extends StatelessWidget {
   final bool obscureText;
   final TextEditingController controller;
   final ValueChanged<String> onChanged;
-  const RoundInput(
-      {Key? key,
-      required this.text,
-      this.icon = Icons.person,
-      required this.controller,
-      required this.onChanged,
-      this.obscureText = false
-      })
-      : super(key: key);
+  const RoundInput({
+    Key? key,
+    required this.text,
+    this.icon = Icons.person,
+    required this.controller,
+    required this.onChanged,
+    this.obscureText = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
