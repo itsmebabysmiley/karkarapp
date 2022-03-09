@@ -15,12 +15,12 @@ class AccountCheck extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          loginPage ? "Don't have an account? " : "Already have an account? ",
+          loginPage? "Don't have an account? " : "Already have an account? ",
           style: const TextStyle(color: cPrimary2Color, fontWeight: FontWeight.w500),
         ),
         GestureDetector(
           onTap: onTap,
-          child: Text(loginPage ? 'Sign Up' : 'Sign In',
+          child: Text(loginPage? 'Sign Up' : 'Sign In',
               style: const TextStyle(
                 color: cPrimaryColor,
                 fontWeight: FontWeight.bold,

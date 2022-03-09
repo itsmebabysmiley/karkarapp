@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:karkarapp/components/round_button.dart';
 import 'package:karkarapp/constaints.dart';
 import 'package:karkarapp/screens/login/login.dart';
+import 'package:karkarapp/screens/singup/sigup.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -45,10 +46,24 @@ class _WelcomePageState extends State<WelcomePage> {
                     'assets/logo/karkar_3.png',
                     height: size.height * 0.4,
                   ),
-                  RoundedButton(text: 'LOG IN', onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => LogInPage()));
-                  }),
-                  RoundedButton(text: 'SIGN UP', onPressed: () {}, color: cPrimary2Color,)
+                  RoundedButton(
+                      text: 'LOG IN',
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LogInPage()));
+                      }),
+                  RoundedButton(
+                    text: 'SIGN UP',
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpPage()));
+                    },
+                    color: cPrimary2Color,
+                  )
                 ],
               ),
             )

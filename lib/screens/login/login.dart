@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:karkarapp/components/divider.dart';
 import 'package:karkarapp/components/round_button.dart';
 import 'package:karkarapp/components/round_input.dart';
+import 'package:karkarapp/components/round_password_input.dart';
+import 'package:karkarapp/constaints.dart';
 import 'package:karkarapp/screens/login/components/account_check.dart';
 import 'package:karkarapp/screens/login/components/social_button.dart';
+import 'package:karkarapp/screens/singup/sigup.dart';
 
 class LogInPage extends StatefulWidget {
   const LogInPage({Key? key}) : super(key: key);
@@ -15,6 +18,7 @@ class LogInPage extends StatefulWidget {
 class _LogInPageState extends State<LogInPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _passwordVisible = true;
 
   @override
   void dispose() {
@@ -50,7 +54,7 @@ class _LogInPageState extends State<LogInPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
+                  const Text(
                     "LOG IN",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
@@ -59,20 +63,20 @@ class _LogInPageState extends State<LogInPage> {
                     height: size.height * 0.37,
                   ),
                   RoundInput(
-                      text: 'email',
-                      icon: Icons.person,
-                      controller: _emailController,
-                      onChanged: (value) {}),
-                  RoundInput(
-                      text: 'password',
-                      controller: _passwordController,
-                      obscureText: true,
-                      onChanged: (value) {}),
+                    text: 'Email',
+                    icon: Icons.person,
+                    controller: _emailController,
+                    onChanged: (value) {},
+                  ),
+                  PasswordInput(
+                    passwordController: _passwordController,
+                    text: 'Password',
+                  ),
                   RoundedButton(
                       text: 'LOGIN',
                       onPressed: () {
-                        // print(_emailController.text.toString());
-                        // print(_passwordController.text.toString());
+                        print(_emailController.text.toString());
+                        print(_passwordController.text.toString());
                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                             content: Text(
                                 'Sorry .·´¯`(>▂<)´¯`·.  Login is under developing')));
@@ -83,16 +87,35 @@ class _LogInPageState extends State<LogInPage> {
                     children: <Widget>[
                       SocialIcon(
                         iconPath: "assets/icons/facebook.png",
-                        onTap: () {},
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content: Text(
+                                  'Sorry .·´¯`(>▂<)´¯`·.  Facebook login is under developing')));
+                        },
                       ),
                       SocialIcon(
                         iconPath: "assets/icons/google.png",
-                        onTap: () {},
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content: Text(
+                                  'Sorry .·´¯`(>▂<)´¯`·.  Google login is under developing')));
+                        },
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10,),
-                  AccountCheck(loginPage: false, onTap: (){print('ok');})
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  AccountCheck(
+                    loginPage: false,
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpPage()));
+                    },
+                  ),
                 ],
               ),
             )
