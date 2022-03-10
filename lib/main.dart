@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:karkarapp/constaints.dart';
+import 'package:karkarapp/screens/home/home.dart';
 import 'package:karkarapp/screens/welcome/welcome.dart';
 
 void main() {
@@ -19,7 +20,11 @@ class MyApp extends StatelessWidget {
         primaryColor: cPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: WelcomePage(),
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => const WelcomePage(),
+        '/home' : (context) =>const HomePage(),
+      },
     );
   }
 }
