@@ -73,14 +73,13 @@ class _LogInPageState extends State<LogInPage> {
                     text: 'Password',
                   ),
                   RoundedButton(
-                      text: 'LOGIN',
-                      onPressed: () {
-                        print(_emailController.text.toString());
-                        print(_passwordController.text.toString());
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                            content: Text(
-                                'Sorry .·´¯`(>▂<)´¯`·.  Login is under developing')));
-                      }),
+                    text: 'LOGIN',
+                    onPressed: () {
+                      // print(_emailController.text.toString());
+                      // print(_passwordController.text.toString());
+                      Navigator.pushNamed(context, '/home');
+                    },
+                  ),
                   const XDivider(text: 'OR'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
