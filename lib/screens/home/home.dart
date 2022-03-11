@@ -3,7 +3,9 @@ import 'package:karkarapp/components/custom_bold_underline_text.dart';
 import 'package:karkarapp/components/custom_card.dart';
 import 'package:karkarapp/components/header_with_searchbar.dart';
 import 'package:karkarapp/constaints.dart';
+import 'package:karkarapp/models/products.dart';
 import 'package:karkarapp/screens/cart/cart.dart';
+import 'package:karkarapp/screens/details_screen/detail.dart';
 import 'package:karkarapp/screens/more/more.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,32 +30,32 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
         shadowColor: cPrimaryColor,
       ),
-       body: IndexedStack(
+      body: IndexedStack(
         index: _selectedIndex,
         children: _pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
-      selectedItemColor: cPrimaryColor,
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.add_shopping_cart),
-          label: 'Cart',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.more_horiz),
-          label: 'More',
-        ),
-      ],
-      currentIndex: _selectedIndex,
-      onTap: _onItemTapped,
-    ),
-     
+        selectedItemColor: cPrimaryColor,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_shopping_cart),
+            label: 'Cart',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.more_horiz),
+            label: 'More',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
     );
   }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -65,7 +67,6 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({
     Key? key,
   }) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -82,39 +83,71 @@ class HomeScreen extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: const <Widget>[
-                CustomCard(
-                    imagePath: "assets/images/candy_1.png",
-                    name: "candy 1",
-                    city: "Bangkok",
-                    price: 20.00),
-                CustomCard(
-                    imagePath: "assets/images/candy_2.png",
-                    name: "candy 2",
-                    city: "Chai mai",
-                    price: 40.00),
-                CustomCard(
-                    imagePath: "assets/images/capcake.png",
-                    name: "capcake",
-                    city: "Bangkok",
-                    price: 35.00),
+              children: <Widget>[
+                for (var i in recommend_products)
+                  CardItem(
+                      imagePath: i.image,
+                      name: i.name,
+                      city: i.city,
+                      price: i.price,
+                      onTap: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        DetailScreen(product: i)))
+                          }),
               ],
             ),
           ),
           const SizedBox(
             height: 12,
           ),
-          const CustomHeadline(title: 'Recent orders'),
+          const CustomHeadline(title: 'You may like'),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const <Widget>[
-                CustomCard(
-                    imagePath: "assets/images/capcake.png",
-                    name: "capcake",
-                    city: "Bangkok",
-                    price: 35.00),
+              children: <Widget>[
+                for (var i in maylike_products)
+                  CardItem(
+                      imagePath: i.image,
+                      name: i.name,
+                      city: i.city,
+                      price: i.price,
+                      onTap: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        DetailScreen(product: i)))
+                          }),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          const CustomHeadline(title: 'For you'),
+          const SizedBox(
+            height: 12,
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: <Widget>[
+                for (var i in maylike_products)
+                  CardItem2(
+                      imagePath: i.image,
+                      name: i.name,
+                      city: i.city,
+                      price: i.price,
+                      onTap: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        DetailScreen(product: i)))
+                          }),
               ],
             ),
           ),
