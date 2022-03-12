@@ -10,7 +10,7 @@
   </p>
 </p>
 
-KarKar App has 5 screen for now (Mar 12, 2022).
+KarKar App has 5 screens for now (Mar 12, 2022).
 1. Welcome screen
 2. Login screen
 3. Signup screnn
