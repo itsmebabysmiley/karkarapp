@@ -5,7 +5,7 @@ class Description extends StatelessWidget {
   final String description;
   const Description({
     Key? key,
-    this.description = '',
+    required this.description,
   }) : super(key: key);
 
   @override

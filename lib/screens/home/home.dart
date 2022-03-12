@@ -84,8 +84,8 @@ class HomeScreen extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: <Widget>[
-                for (var i in recommend_products)
-                  CardItem(
+                for (var i in recommendProducts)
+                  CardItemMedium(
                       imagePath: i.image,
                       name: i.name,
                       city: i.city,
@@ -108,8 +108,8 @@ class HomeScreen extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: <Widget>[
-                for (var i in maylike_products)
-                  CardItem(
+                for (var i in maylikeProducts)
+                  CardItemMedium(
                       imagePath: i.image,
                       name: i.name,
                       city: i.city,
@@ -135,8 +135,8 @@ class HomeScreen extends StatelessWidget {
             scrollDirection: Axis.vertical,
             child: Column(
               children: <Widget>[
-                for (var i in maylike_products)
-                  CardItem2(
+                for (var i in maylikeProducts)
+                  CardItemWide(
                       imagePath: i.image,
                       name: i.name,
                       city: i.city,

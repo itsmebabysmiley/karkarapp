@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 
 import '../../../constaints.dart';
 
-class PriceWithFavIcon extends StatelessWidget {
+class PriceWithFavIcon extends StatefulWidget {
   final double price;
   const PriceWithFavIcon({
     Key? key, required this.price,
   }) : super(key: key);
 
+  @override
+  State<PriceWithFavIcon> createState() => _PriceWithFavIconState();
+}
+
+class _PriceWithFavIconState extends State<PriceWithFavIcon> {
+  bool _isFav = false;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -22,7 +28,7 @@ class PriceWithFavIcon extends StatelessWidget {
                     fontSize: 20,
                   )),
               TextSpan(
-                text: '$price',
+                text: '${widget.price.toString()}',
                 style: const TextStyle(
                     color: cFontColor,
                     fontSize: 30,
@@ -33,8 +39,10 @@ class PriceWithFavIcon extends StatelessWidget {
         ),
         const Spacer(),
         IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.favorite_border),
+          onPressed: ()=> setState(() {
+            _isFav = !_isFav;
+          }),
+          icon: _isFav? Icon(Icons.favorite, color: Colors.red.shade600,) : const Icon(Icons.favorite_border),
         ),
         const SizedBox(
           height: 10,
