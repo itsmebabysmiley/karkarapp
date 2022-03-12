@@ -27,7 +27,7 @@ This screen is our first screen when user open our application.
 
 ### Login and Signup Screens
 
-![login and signup banner](https://user-images.githubusercontent.com/54635089/158012414-e6672ca0-8936-46f8-8209-ddab2da70d5c.png)
+![login and signup banner](https://user-images.githubusercontent.com/54635089/158032818-02d8df1e-fad2-4802-b592-1e94c05814f3.png)
 
 <b>Login Screen</b>  
 Users can log in with their username and password or log in with a Facebook account or Google account. If users don't have an account, users can click <u>Sign up</u> at the bottom of the screen to redirect to the <b>signup</b> screen.    
@@ -36,11 +36,15 @@ Users can log in with their username and password or log in with a Facebook acco
 Users can sign up in a normal way by filling in Name, Email, Password, and Confirm password. Or users can sign up with their Facebook account or Google account. Futhermore, users can redirect to the <b>Login</b> screen by clicking <u>Sign in</u> at the bottom of the screen.
 
 ### Home and Detail Screens
-![home and detail banner](https://user-images.githubusercontent.com/54635089/158012419-7595ea35-bc26-438e-adb8-055821063f29.png)
+![home and detail banner](https://user-images.githubusercontent.com/54635089/158032817-74f6c77d-1016-4d62-8baa-c9a6d0658362.png)
 
 <b>Home Screen</b> 
 The home screen contians 3 sub-screen which are Home, Cart, and More. Home, it will show all products with different sections such as recommended, you may like, or for you. Cart, this screen will show a list of items that the user added to the cart. More, this screen is all about settings.  
 
 <b>Detail Screen</b> 
 This screen provides detail of a product which contains Name, price, location(why we need this?), description, and reviews. Users can buy or add to the cart by clicking the buttons at the bottom of the screen.
+
+### Home and Cart Screens
+![home and cart banner](https://user-images.githubusercontent.com/54635089/158032874-77cfb608-69d4-4853-8e8a-cd1610150f0a.png)
+
  
