@@ -10,17 +10,19 @@
   </p>
 </p>
 
+
 ## Dependencies
 - provider(https://pub.dev/packages/provider)
 - flutter_rating_bar(https://pub.dev/packages/flutter_rating_bar)
 - cupertino_icons(https://pub.dev/packages/cupertino_icons)
 
-KarKar App has 5 screen for now (Mar 12, 2022).
+KarKar App has 5 screen for now (Mar 13, 2022).
 1. Welcome screen
 2. Login screen
-3. Signup screnn
+3. Signup screen
 4. Home screen
 5. Detail of a product screen
+6. Cart screen
 
 
 ### Welcome Screen
