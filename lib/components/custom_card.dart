@@ -8,15 +8,11 @@ import 'package:provider/provider.dart';
 import '../constaints.dart';
 
 class CardItemMedium extends StatelessWidget {
-  final String imagePath, name, city;
-  final double price;
+  final Product product;
   final VoidCallback onTap;
   const CardItemMedium({
     Key? key,
-    required this.imagePath,
-    required this.name,
-    required this.city,
-    required this.price,
+    required this.product,
     required this.onTap,
   }) : super(key: key);
 
@@ -54,7 +50,7 @@ class CardItemMedium extends StatelessWidget {
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20),
                     ),
-                    child: Image.asset(imagePath),
+                    child: Image.asset(product.image),
                   ),
                   Container(
                     padding: const EdgeInsets.all(4),
@@ -71,11 +67,11 @@ class CardItemMedium extends StatelessWidget {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: "$name\n".toUpperCase(),
+                                text: "${product.name}\n".toUpperCase(),
                                 style: Theme.of(context).textTheme.bodyText1,
                               ),
                               TextSpan(
-                                text: city.toUpperCase(),
+                                text: product.city.toUpperCase(),
                                 style: const TextStyle(
                                     fontSize: 12, color: Colors.grey),
                               ),
@@ -84,7 +80,7 @@ class CardItemMedium extends StatelessWidget {
                         ),
                         const Spacer(),
                         Text(
-                          '\$$price',
+                          '\$${product.price.toString()}',
                           style: Theme.of(context)
                               .textTheme
                               .button
@@ -104,16 +100,12 @@ class CardItemMedium extends StatelessWidget {
 }
 
 class CardItemWide extends StatelessWidget {
-  final String imagePath, name, city;
-  final double price;
+  final Product product;
   final VoidCallback onTap;
 
   const CardItemWide({
     Key? key,
-    required this.imagePath,
-    required this.name,
-    required this.city,
-    required this.price,
+    required this.product,
     required this.onTap,
   }) : super(key: key);
 
@@ -145,7 +137,7 @@ class CardItemWide extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Image.asset(
-                      imagePath,
+                      product.image,
                       height: 100,
                       width: 120,
                     ),
@@ -154,11 +146,11 @@ class CardItemWide extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: "$name\n".toUpperCase(),
+                          text: "${product.name}\n".toUpperCase(),
                           style: Theme.of(context).textTheme.bodyText1,
                         ),
                         TextSpan(
-                          text: "$city\n".toUpperCase(),
+                          text: "${product.city}\n".toUpperCase(),
                           style:
                               const TextStyle(fontSize: 12, color: Colors.grey),
                         ),
@@ -167,7 +159,7 @@ class CardItemWide extends StatelessWidget {
                   ),
                   const Spacer(),
                   Text(
-                    '\$$price',
+                    '\$${product.price}',
                     style: Theme.of(context)
                         .textTheme
                         .button
