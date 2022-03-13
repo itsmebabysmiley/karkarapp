@@ -221,48 +221,7 @@ class CardItemWide extends StatelessWidget {
   }
 }
 
-class AddToCartAndBuyButton extends StatelessWidget {
-  final VoidCallback onCartPressed;
-  final VoidCallback onBuyPressed;
-  const AddToCartAndBuyButton({
-    Key? key,
-    required this.onCartPressed,
-    required this.onBuyPressed,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        IconButton(
-            onPressed: onCartPressed,
-            icon: const Icon(
-              Icons.shopping_cart,
-              color: Colors.grey,
-            )),
-        TextButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18.0),
-              ),
-            ),
-          ),
-          onPressed: onBuyPressed,
-          child: Text(
-            'BUY',
-            style: Theme.of(context)
-                .textTheme
-                .button
-                ?.copyWith(color: Colors.white),
-          ),
-        ),
-      ],
-    );
-  }
-}
 
 class CardForCartItem extends StatelessWidget {
   final Product product;
@@ -365,6 +324,50 @@ class CardForCartItem extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+
+class AddToCartAndBuyButton extends StatelessWidget {
+  final VoidCallback onCartPressed;
+  final VoidCallback onBuyPressed;
+  const AddToCartAndBuyButton({
+    Key? key,
+    required this.onCartPressed,
+    required this.onBuyPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        IconButton(
+            onPressed: onCartPressed,
+            icon: const Icon(
+              Icons.shopping_cart,
+              color: Colors.grey,
+            )),
+        TextButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+              ),
+            ),
+          ),
+          onPressed: onBuyPressed,
+          child: Text(
+            'BUY',
+            style: Theme.of(context)
+                .textTheme
+                .button
+                ?.copyWith(color: Colors.white),
+          ),
+        ),
+      ],
     );
   }
 }
