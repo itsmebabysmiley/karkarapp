@@ -83,18 +83,16 @@ class HomeScreen extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: <Widget>[
-                for (var i in recommendProducts)
-                  CardItemMedium(
-                      product: i,
-                      onTap: () => {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        DetailScreen(product: i)))
-                          }),
-              ],
+              children: List.generate(
+                  recommendProducts.length,
+                  (index) => CardItemMedium(
+                      product: recommendProducts[index], onTap: ()=>Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailScreen(
+                          product: recommendProducts[index],
+                        ),
+                      )))),
             ),
           ),
           const SizedBox(
@@ -105,16 +103,16 @@ class HomeScreen extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: List.generate(
-                maylikeProducts.length,
+                recommendProducts.length,
                 (index) => CardItemMedium(
                   product: maylikeProducts[index],
-                  onTap: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                DetailScreen(product: maylikeProducts[index])))
-                  },
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailScreen(
+                          product: maylikeProducts[index],
+                        ),
+                      )),
                 ),
               ),
             ),
@@ -135,10 +133,12 @@ class HomeScreen extends StatelessWidget {
                   product: maylikeProducts[index],
                   onTap: () => {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                DetailScreen(product: maylikeProducts[index])))
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            DetailScreen(product: maylikeProducts[index]),
+                      ),
+                    ),
                   },
                 ),
               ),

@@ -61,12 +61,12 @@ class DetailScreen extends StatelessWidget {
                                   ]),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  const SizedBox(
+                                children: const <Widget>[
+                                   SizedBox(
                                     height: 10,
                                   ),
-                                  const CustomBUText(text: 'Reviews'),
-                                  const SizedBox(
+                                   CustomBUText(text: 'Reviews'),
+                                   SizedBox(
                                     height: 10,
                                   ),
                                    Reviews(name: 'itsmebabysmiley',message: 'Very good quantity!', rating: 5,),
