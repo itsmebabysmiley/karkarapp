@@ -12,16 +12,6 @@ class CouterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _shoppingItems = context.watch<ShoppingCart>().cart;
-    int finIndexOfProduct() {
-      for (var i = 0; i < _shoppingItems.length; i++) {
-        if (product.id == _shoppingItems[i].item.id) {
-          return i;
-        }
-      }
-      return 0;
-    };
-    int indexOfProduct = finIndexOfProduct();
     return Row(
       children: <Widget>[
         Material(
@@ -42,7 +32,7 @@ class CouterButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Text(
-              '${context.watch<ShoppingCart>().cart[indexOfProduct].amount}'),
+              '${context.watch<ShoppingCart>().getTotalIemById(product.id)}'),
         ),
         Material(
           color: Colors.transparent,
