@@ -10,11 +10,15 @@
   </p>
 </p>
 
+## THIS IS ONLY UI. THERE IS NO BACKEND HERE. IF YOU WANT BACKEND, CONSIDER DONATE AND CONTACT ME.
 
 ## Dependencies
+
 - provider(https://pub.dev/packages/provider)
 - flutter_rating_bar(https://pub.dev/packages/flutter_rating_bar)
 - cupertino_icons(https://pub.dev/packages/cupertino_icons)
+
+## Screens
 
 KarKar App has 5 screen for now (Mar 13, 2022).
 1. Welcome screen
