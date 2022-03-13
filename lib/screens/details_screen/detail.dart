@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:karkarapp/components/custom_bold_underline_text.dart';
 import 'package:karkarapp/models/products.dart';
-import 'package:karkarapp/screens/details_screen/components/bottom_navbar.dart';
+import 'package:karkarapp/screens/details_screen/components/add_to_cart_and_buy_buttons.dart';
 import 'package:karkarapp/screens/details_screen/components/description.dart';
 import 'package:karkarapp/screens/details_screen/components/image.dart';
 
@@ -24,7 +24,7 @@ class DetailScreen extends StatelessWidget {
           title: Text('Detail'.toUpperCase()),
           centerTitle: true,
         ),
-        bottomNavigationBar: CustomBottomNavBar(),
+        bottomNavigationBar: AddToCartWithBuyButton(product: product,),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -43,8 +43,7 @@ class DetailScreen extends StatelessWidget {
                           PriceWithFavIcon(price: product.price),
                           ProductName(name: product.name),
                           Description(
-                            description:
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis id lacus et lacinia. In dapibus, metus id dignissim varius, est tellus feugiat justo, et interdum neque dolor in massa. Vestibulum sit amet suscipit felis, sed molestie nulla. Morbi eu gravida ante, aliquet laoreet nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras congue urna lacus, vitae scelerisque magna placerat at. Morbi eget risus vel nulla cursus tempus.",
+                            description: product.description,
                           ),
                           Container(
                               margin: const EdgeInsets.symmetric(vertical: 10),
@@ -62,12 +61,12 @@ class DetailScreen extends StatelessWidget {
                                   ]),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  const SizedBox(
+                                children: const <Widget>[
+                                   SizedBox(
                                     height: 10,
                                   ),
-                                  const CustomBUText(text: 'Reviews'),
-                                  const SizedBox(
+                                   CustomBUText(text: 'Reviews'),
+                                   SizedBox(
                                     height: 10,
                                   ),
                                    Reviews(name: 'itsmebabysmiley',message: 'Very good quantity!', rating: 5,),

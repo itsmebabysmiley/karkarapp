@@ -83,21 +83,16 @@ class HomeScreen extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: <Widget>[
-                for (var i in recommend_products)
-                  CardItem(
-                      imagePath: i.image,
-                      name: i.name,
-                      city: i.city,
-                      price: i.price,
-                      onTap: () => {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        DetailScreen(product: i)))
-                          }),
-              ],
+              children: List.generate(
+                  recommendProducts.length,
+                  (index) => CardItemMedium(
+                      product: recommendProducts[index], onTap: ()=>Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailScreen(
+                          product: recommendProducts[index],
+                        ),
+                      )))),
             ),
           ),
           const SizedBox(
@@ -107,21 +102,19 @@ class HomeScreen extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: <Widget>[
-                for (var i in maylike_products)
-                  CardItem(
-                      imagePath: i.image,
-                      name: i.name,
-                      city: i.city,
-                      price: i.price,
-                      onTap: () => {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        DetailScreen(product: i)))
-                          }),
-              ],
+              children: List.generate(
+                recommendProducts.length,
+                (index) => CardItemMedium(
+                  product: maylikeProducts[index],
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailScreen(
+                          product: maylikeProducts[index],
+                        ),
+                      )),
+                ),
+              ),
             ),
           ),
           const SizedBox(
@@ -134,21 +127,21 @@ class HomeScreen extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
-              children: <Widget>[
-                for (var i in maylike_products)
-                  CardItem2(
-                      imagePath: i.image,
-                      name: i.name,
-                      city: i.city,
-                      price: i.price,
-                      onTap: () => {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        DetailScreen(product: i)))
-                          }),
-              ],
+              children: List.generate(
+                maylikeProducts.length,
+                (index) => CardItemWide(
+                  product: maylikeProducts[index],
+                  onTap: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            DetailScreen(product: maylikeProducts[index]),
+                      ),
+                    ),
+                  },
+                ),
+              ),
             ),
           ),
         ],

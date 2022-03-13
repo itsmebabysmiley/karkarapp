@@ -15,10 +15,7 @@ class CustomBUText extends StatelessWidget {
             padding: const EdgeInsets.only(left: 5),
             child: Text(
               text,
-              style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: cPrimaryColor),
+              style: Theme.of(context).textTheme.headline6?.copyWith(color: cPrimaryColor, fontWeight: FontWeight.bold),
             ),
           ),
           Positioned(
