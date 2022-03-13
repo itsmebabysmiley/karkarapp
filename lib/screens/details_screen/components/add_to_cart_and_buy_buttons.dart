@@ -11,8 +11,8 @@ class AddToCartWithBuyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _shoppingItems = context.watch<ShoppingCart>().cart;
-
+    var isInCart = context.select<ShoppingCart, bool>(
+        (cart) => cart.cart.any((element) => element.equals(product)));
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
       height: 60,
@@ -38,13 +38,22 @@ class AddToCartWithBuyButton extends StatelessWidget {
               color: Colors.transparent,
               child: InkWell(
                 onTap: () {
-                  for (ProductInCart p in _shoppingItems) {
-                    if (p.item.id == product.id) {
-                      context.read<ShoppingCart>().increment(product);
-                      return;
-                    }
-                  }
-                  context.read<ShoppingCart>().addToCart(product);
+                  isInCart
+                      ? context.read<ShoppingCart>().increment(product)
+                      : context.read<ShoppingCart>().addToCart(product);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: const Text('Added to the cart.'),
+                      duration: const Duration(seconds: 1),
+                      action: SnackBarAction(
+                        label: 'Undo',
+                        textColor: Colors.white,
+                        onPressed: () {
+                          context.read<ShoppingCart>().removeFromCart(product);
+                        },
+                      ),
+                    ),
+                  );
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10),

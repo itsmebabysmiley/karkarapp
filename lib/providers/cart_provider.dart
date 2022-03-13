@@ -2,24 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karkarapp/models/products.dart';
 
-// class ShoppingCart with ChangeNotifier{
-
-//   final List<Product> _shoppingCart = [];
-
-//   void addToCart(Product product){
-//     _shoppingCart.add(product);
-//     notifyListeners();
-//   }
-//   void removeFromCart(Product product){
-//     _shoppingCart.remove(product);
-//     notifyListeners();
-//   }
-
-//   List<Product> get cart => _shoppingCart;
-
-//   double get totalPrice => cart.fold(0, (total, current) => total+current.price);
-// }
-
 class ShoppingCart with ChangeNotifier {
   final List<ProductInCart> _shoppingCart = [];
   void addToCart(Product product) {
@@ -46,6 +28,14 @@ class ShoppingCart with ChangeNotifier {
 
 
   List<ProductInCart> get cart => _shoppingCart;
+  int getTotalIemById(int id){
+    for(ProductInCart product in _shoppingCart){
+      if(product.productId == id){
+        return product.totalItem;
+      }
+    }
+    return -1;
+  }
 
   double get totalPrice =>
       cart.fold(0, (total, current) => total + (current.item.price*current.amount));
@@ -63,6 +53,7 @@ class ProductInCart {
 
   Product get item => product;
   int get totalItem => amount;
+  int get productId => product.id;
 
    @override
   int get hashCode => product.id;
@@ -70,8 +61,11 @@ class ProductInCart {
   @override
   bool operator == (Object other) =>
       other is ProductInCart && other.product == product;
-  @override
-  String toString() => product.id.toString() + product.name; 
+
+
+  bool equals(Product product) {
+    return product == this.product;
+  }
   
 }
 
