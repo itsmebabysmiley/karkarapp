@@ -25,7 +25,7 @@ List<Product> recommendProducts = [
   Product(
       id: 1,
       image: "assets/images/candy_1.png",
-      name: "Candy 1",
+      name: "Cerry Candy",
       city: "Bangkok",
       price: 10.00,
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis id lacus et lacinia. In dapibus, metus id dignissim varius, est tellus feugiat justo, et interdum neque dolor in massa. Vestibulum sit amet suscipit felis, sed molestie nulla. Morbi eu gravida ante, aliquet laoreet nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras congue urna lacus, vitae scelerisque magna placerat at. Morbi eget risus vel nulla cursus tempus."
@@ -33,7 +33,7 @@ List<Product> recommendProducts = [
   Product(
       id: 2,
       image: "assets/images/candy_2.png",
-      name: "Candy 2",
+      name: "Vinila double",
       city: "Bangkok",
       price: 20.00,
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis id lacus et lacinia. In dapibus, metus id dignissim varius, est tellus feugiat justo, et interdum neque dolor in massa. Vestibulum sit amet suscipit felis, sed molestie nulla. Morbi eu gravida ante, aliquet laoreet nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras congue urna lacus, vitae scelerisque magna placerat at. Morbi eget risus vel nulla cursus tempus."),
@@ -50,14 +50,14 @@ List<Product> maylikeProducts = [
   Product(
       id: 1,
       image: "assets/images/candy_1.png",
-      name: "Candy 1",
+      name: "Cerry Candy",
       city: "Bangkok",
       price: 10.00,
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis id lacus et lacinia. In dapibus, metus id dignissim varius, est tellus feugiat justo, et interdum neque dolor in massa. Vestibulum sit amet suscipit felis, sed molestie nulla. Morbi eu gravida ante, aliquet laoreet nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras congue urna lacus, vitae scelerisque magna placerat at. Morbi eget risus vel nulla cursus tempus."),
   Product(
       id: 2,
       image: "assets/images/candy_2.png",
-      name: "Candy 2",
+      name: "Vinila double",
       city: "Bangkok",
       price: 20.00,
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis id lacus et lacinia. In dapibus, metus id dignissim varius, est tellus feugiat justo, et interdum neque dolor in massa. Vestibulum sit amet suscipit felis, sed molestie nulla. Morbi eu gravida ante, aliquet laoreet nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras congue urna lacus, vitae scelerisque magna placerat at. Morbi eget risus vel nulla cursus tempus."),
@@ -71,21 +71,21 @@ List<Product> maylikeProducts = [
   Product(
       id: 4,
       image: "assets/images/icecream.png",
-      name: "Candy 1",
+      name: "ice-cream",
       city: "Bangkok",
       price: 10.00,
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis id lacus et lacinia. In dapibus, metus id dignissim varius, est tellus feugiat justo, et interdum neque dolor in massa. Vestibulum sit amet suscipit felis, sed molestie nulla. Morbi eu gravida ante, aliquet laoreet nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras congue urna lacus, vitae scelerisque magna placerat at. Morbi eget risus vel nulla cursus tempus."),
   Product(
       id: 5,
       image: "assets/images/rollypop.png",
-      name: "Candy 2",
+      name: "Green rollypop yummy yummy jymmy youasdfasdfasdfasdfewrqwvxvse asdf as",
       city: "Bangkok",
       price: 20.00,
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis id lacus et lacinia. In dapibus, metus id dignissim varius, est tellus feugiat justo, et interdum neque dolor in massa. Vestibulum sit amet suscipit felis, sed molestie nulla. Morbi eu gravida ante, aliquet laoreet nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras congue urna lacus, vitae scelerisque magna placerat at. Morbi eget risus vel nulla cursus tempus."),
   Product(
       id: 6,
       image: "assets/images/rollypop2.png",
-      name: "Capcake",
+      name: "rollypop",
       city: "Bangkok",
       price: 30.00,
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis id lacus et lacinia. In dapibus, metus id dignissim varius, est tellus feugiat justo, et interdum neque dolor in massa. Vestibulum sit amet suscipit felis, sed molestie nulla. Morbi eu gravida ante, aliquet laoreet nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras congue urna lacus, vitae scelerisque magna placerat at. Morbi eget risus vel nulla cursus tempus."),
