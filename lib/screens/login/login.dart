@@ -106,7 +106,7 @@ class _LogInPageState extends State<LogInPage> {
                     height: 10,
                   ),
                   AccountCheck(
-                    loginPage: false,
+                    loginPage: true,
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(
