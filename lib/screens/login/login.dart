@@ -3,7 +3,7 @@ import 'package:karkarapp/components/divider.dart';
 import 'package:karkarapp/components/round_button.dart';
 import 'package:karkarapp/components/round_input.dart';
 import 'package:karkarapp/components/round_password_input.dart';
-import 'package:karkarapp/constaints.dart';
+import 'package:karkarapp/core/auth/login.dart';
 import 'package:karkarapp/screens/login/components/account_check.dart';
 import 'package:karkarapp/screens/login/components/social_button.dart';
 import 'package:karkarapp/screens/singup/sigup.dart';
@@ -18,7 +18,9 @@ class LogInPage extends StatefulWidget {
 class _LogInPageState extends State<LogInPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  bool _passwordVisible = true;
+  final Login login = Login();
+
+  bool _isLoggedIn = false;
 
   @override
   void dispose() {
@@ -32,7 +34,7 @@ class _LogInPageState extends State<LogInPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: size.height,
         width: double.infinity,
         child: Stack(
@@ -72,14 +74,24 @@ class _LogInPageState extends State<LogInPage> {
                     passwordController: _passwordController,
                     text: 'Password',
                   ),
-                  RoundedButton(
-                    text: 'LOGIN',
-                    onPressed: () {
-                      // print(_emailController.text.toString());
-                      // print(_passwordController.text.toString());
-                      Navigator.pushNamed(context, '/home');
-                    },
-                  ),
+                  if (!_isLoggedIn)
+                    RoundedButton(
+                      text: 'LOGIN',
+                      onPressed: () {
+                        setState(() {
+                          _isLoggedIn = true;
+                        });
+                        login.emailLogin(_emailController.text,
+                            _passwordController.text, context);
+                        setState(() {
+                          _isLoggedIn = false;
+                        });
+                      },
+                    ),
+                  if (_isLoggedIn)
+                    const Center(
+                      child: CircularProgressIndicator(),
+                    ),
                   const XDivider(text: 'OR'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
