@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:karkarapp/components/custom_bold_underline_text.dart';
 import 'package:karkarapp/components/custom_card.dart';
@@ -17,11 +18,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  static const List<Widget> _pages = <Widget>[
+ 
+
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+   static const List<Widget> _pages = <Widget>[
     HomeScreen(),
     CartScreen(),
     MoreScreen(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,27 +65,26 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 }
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({
-    Key? key,
-  }) : super(key: key);
+
+  const HomeScreen(
+      {Key? key,})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    final User user = FirebaseAuth.instance.currentUser!;
     Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          HeaderWithSearchBar(size: size),
+          HeaderWithSearchBar(
+            displayName: user.displayName?? '',photoURL: user.photoURL ,
+          ),
           const SizedBox(
             height: 12,
           ),
@@ -86,13 +95,14 @@ class HomeScreen extends StatelessWidget {
               children: List.generate(
                   recommendProducts.length,
                   (index) => CardItemMedium(
-                      product: recommendProducts[index], onTap: ()=>Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetailScreen(
-                          product: recommendProducts[index],
-                        ),
-                      )))),
+                      product: recommendProducts[index],
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailScreen(
+                              product: recommendProducts[index],
+                            ),
+                          )))),
             ),
           ),
           const SizedBox(

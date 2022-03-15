@@ -4,6 +4,7 @@ import 'package:karkarapp/components/round_button.dart';
 import 'package:karkarapp/components/round_input.dart';
 import 'package:karkarapp/components/round_password_input.dart';
 import 'package:karkarapp/core/auth/login.dart';
+import 'package:karkarapp/screens/home/home.dart';
 import 'package:karkarapp/screens/login/components/account_check.dart';
 import 'package:karkarapp/screens/login/components/social_button.dart';
 import 'package:karkarapp/screens/singup/sigup.dart';
@@ -19,9 +20,7 @@ class _LogInPageState extends State<LogInPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final Login login = Login();
-
-  bool _isLoggedIn = false;
-
+  bool isLoading = false; //prevent user spam the login button.
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -74,21 +73,21 @@ class _LogInPageState extends State<LogInPage> {
                     passwordController: _passwordController,
                     text: 'Password',
                   ),
-                  if (!_isLoggedIn)
+                  if (!isLoading)
                     RoundedButton(
                       text: 'LOGIN',
-                      onPressed: () {
+                      onPressed: () async {
                         setState(() {
-                          _isLoggedIn = true;
+                          isLoading = true;
                         });
-                        login.emailLogin(_emailController.text,
+                        await login.emailLogin(_emailController.text,
                             _passwordController.text, context);
                         setState(() {
-                          _isLoggedIn = false;
+                          isLoading = false;
                         });
                       },
                     ),
-                  if (_isLoggedIn)
+                  if (isLoading)
                     const Center(
                       child: CircularProgressIndicator(),
                     ),

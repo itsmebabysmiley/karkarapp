@@ -3,6 +3,7 @@ import 'package:karkarapp/components/divider.dart';
 import 'package:karkarapp/components/round_button.dart';
 import 'package:karkarapp/components/round_input.dart';
 import 'package:karkarapp/components/round_password_input.dart';
+import 'package:karkarapp/core/auth/signup.dart';
 import 'package:karkarapp/screens/login/components/account_check.dart';
 import 'package:karkarapp/screens/login/components/social_button.dart';
 import 'package:karkarapp/screens/login/login.dart';
@@ -19,11 +20,9 @@ class _SignUpPageState extends State<SignUpPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+  final Signup sigup = Signup();
 
-  bool _namevalidate = false;
-  bool _emailvalidate = false;
-  bool _passwordvalidate = false;
-  bool _confirmPasswordvalidate = false;
+  bool _isLoading = false; //prevent user spam the signup button.
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +69,10 @@ class _SignUpPageState extends State<SignUpPage> {
                   PasswordInput(
                       passwordController: _confirmPasswordController,
                       text: 'ConfirmPassword'),
+                  if(!_isLoading)
                   RoundedButton(
                     text: 'SIGNUP',
-                    onPressed: () {
+                    onPressed: () async {
                       String? tempText;
                       if (_nameController.text.trim().isEmpty) {
                         tempText = 'Name can\'t be empty.';
@@ -86,19 +86,27 @@ class _SignUpPageState extends State<SignUpPage> {
                           tempText = 'Password does not match';
                         }
                       }
-
                       if (tempText != null) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(tempText),
                           ),
                         );
+                        return;
+                      }else{
+                        setState(() {
+                         _isLoading = true;
+                        });
+                        await sigup.signup(_nameController.text, _emailController.text, _passwordController.text, context);
+                        setState(() {
+                          _isLoading = false;
+                        });
                       }
-                      // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      //     content: Text(
-                      //         'Sorry .·´¯`(>▂<)´¯`·.  Sign Up is under developing')));
+
                     },
                   ),
+                  if(_isLoading)
+                  const Center(child: CircularProgressIndicator(),),
                   const XDivider(text: 'OR'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
