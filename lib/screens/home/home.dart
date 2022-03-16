@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:karkarapp/components/custom_bold_underline_text.dart';
@@ -77,7 +78,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final User user = FirebaseAuth.instance.currentUser!;
-    Size size = MediaQuery.of(context).size;
+    print(user);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

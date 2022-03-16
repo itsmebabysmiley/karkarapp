@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:karkarapp/components/divider.dart';
 import 'package:karkarapp/components/round_button.dart';
@@ -20,13 +22,18 @@ class _LogInPageState extends State<LogInPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final Login login = Login();
-  bool isLoading = false; //prevent user spam the login button.
+  bool _loading = false; //prevent user spam the login button.
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+  void isLoadin(bool staus){
+    setState(() {
+      _loading = staus;
+    });
   }
 
   @override
@@ -73,21 +80,17 @@ class _LogInPageState extends State<LogInPage> {
                     passwordController: _passwordController,
                     text: 'Password',
                   ),
-                  if (!isLoading)
+                  if (!_loading)
                     RoundedButton(
                       text: 'LOGIN',
                       onPressed: () async {
-                        setState(() {
-                          isLoading = true;
-                        });
-                        await login.emailLogin(_emailController.text,
+                        isLoadin(true);
+                        await login.singInWithEmail(_emailController.text,
                             _passwordController.text, context);
-                        setState(() {
-                          isLoading = false;
-                        });
+                        isLoadin(false);
                       },
                     ),
-                  if (isLoading)
+                  if (_loading)
                     const Center(
                       child: CircularProgressIndicator(),
                     ),
@@ -97,11 +100,11 @@ class _LogInPageState extends State<LogInPage> {
                     children: <Widget>[
                       SocialIcon(
                         iconPath: "assets/icons/facebook.png",
-                        onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                              content: Text(
-                                  'Sorry .·´¯`(>▂<)´¯`·.  Facebook login is under developing')));
-                        },
+                        onTap: () async {
+                          isLoadin(true);
+                          await login.signInWithFacebook(context);
+                          isLoadin(false);
+                        }
                       ),
                       SocialIcon(
                         iconPath: "assets/icons/google.png",

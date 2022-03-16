@@ -34,10 +34,19 @@ class HeaderWithSearchBar extends StatelessWidget {
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
                 const Spacer(),
-                Image.asset(
-                  photoURL?? 'assets/icons/man.png' ,
-                  height: 50,
-                  width: 50,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: photoURL == null
+                      ? Image.asset(
+                          'assets/icons/man.png',
+                          height: 50,
+                          width: 50,
+                        )
+                      : Image.network(
+                          photoURL!,
+                          height: 50,
+                          width: 50,
+                        ),
                 ),
               ],
             ),
