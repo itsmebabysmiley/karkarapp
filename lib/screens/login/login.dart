@@ -108,10 +108,10 @@ class _LogInPageState extends State<LogInPage> {
                       ),
                       SocialIcon(
                         iconPath: "assets/icons/google.png",
-                        onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                              content: Text(
-                                  'Sorry .·´¯`(>▂<)´¯`·.  Google login is under developing')));
+                        onTap: () async {
+                          isLoadin(true);
+                          await login.signInWithGoogle(context);
+                          isLoadin(false);
                         },
                       ),
                     ],
