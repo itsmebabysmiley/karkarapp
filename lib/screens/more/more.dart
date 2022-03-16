@@ -70,11 +70,9 @@ class _MoreScreenState extends State<MoreScreen> {
             title: 'Sign out',
             onTap: () {
               _signOut();
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => WelcomePage(),
-                ),
+              Navigator.popUntil(
+                    context,
+                    ModalRoute.withName('/'),
               );
             },
           ),
