@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="facebook_app_id">391235639013924</string>
+    <string name="app_name">KarKar APP</string>
+
+    <string name="fb_login_protocol_scheme">fb391235639013924</string>
+    <string name="facebook_client_token">b8708bddf7836dfca5446fbee53c70de</string>
     <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is off -->
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <!-- Show a splash screen on the activity. Automatically removed when
