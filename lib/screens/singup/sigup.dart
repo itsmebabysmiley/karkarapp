@@ -3,6 +3,7 @@ import 'package:karkarapp/components/divider.dart';
 import 'package:karkarapp/components/round_button.dart';
 import 'package:karkarapp/components/round_input.dart';
 import 'package:karkarapp/components/round_password_input.dart';
+import 'package:karkarapp/core/auth/login.dart';
 import 'package:karkarapp/core/auth/signup.dart';
 import 'package:karkarapp/screens/login/components/account_check.dart';
 import 'package:karkarapp/screens/login/components/social_button.dart';
@@ -21,8 +22,14 @@ class _SignUpPageState extends State<SignUpPage> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
   final Signup sigup = Signup();
+  final Login login = Login();
 
-  bool _isLoading = false; //prevent user spam the signup button.
+  bool _loading = false; //prevent user spam the signup button.
+  void isLoading(bool staus) {
+    setState(() {
+      _loading = staus;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,62 +76,63 @@ class _SignUpPageState extends State<SignUpPage> {
                   PasswordInput(
                       passwordController: _confirmPasswordController,
                       text: 'ConfirmPassword'),
-                  if(!_isLoading)
-                  RoundedButton(
-                    text: 'SIGNUP',
-                    onPressed: () async {
-                      String? tempText;
-                      if (_nameController.text.trim().isEmpty) {
-                        tempText = 'Name can\'t be empty.';
-                      } else if (_emailController.text.trim().isEmpty) {
-                        tempText = 'Email can\'t be empty.';
-                      } else if (_passwordController.text.trim().isEmpty) {
-                        tempText = 'Password can\'t be empty.';
-                      } else if (_confirmPasswordController.text.isNotEmpty) {
-                        if (_passwordController.text !=
-                            _confirmPasswordController.text) {
-                          tempText = 'Password does not match';
+                  if (!_loading)
+                    RoundedButton(
+                      text: 'SIGNUP',
+                      onPressed: () async {
+                        String? tempText;
+                        if (_nameController.text.trim().isEmpty) {
+                          tempText = 'Name can\'t be empty.';
+                        } else if (_emailController.text.trim().isEmpty) {
+                          tempText = 'Email can\'t be empty.';
+                        } else if (_passwordController.text.trim().isEmpty) {
+                          tempText = 'Password can\'t be empty.';
+                        } else if (_confirmPasswordController.text.isNotEmpty) {
+                          if (_passwordController.text !=
+                              _confirmPasswordController.text) {
+                            tempText = 'Password does not match';
+                          }
                         }
-                      }
-                      if (tempText != null) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(tempText),
-                          ),
-                        );
-                        return;
-                      }else{
-                        setState(() {
-                         _isLoading = true;
-                        });
-                        await sigup.signup(_nameController.text, _emailController.text, _passwordController.text, context);
-                        setState(() {
-                          _isLoading = false;
-                        });
-                      }
-
-                    },
-                  ),
-                  if(_isLoading)
-                  const Center(child: CircularProgressIndicator(),),
+                        if (tempText != null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(tempText),
+                            ),
+                          );
+                          return;
+                        } else {
+                          isLoading(true);
+                          await sigup.signup(
+                              _nameController.text,
+                              _emailController.text,
+                              _passwordController.text,
+                              context);
+                          isLoading(false);
+                        }
+                      },
+                    ),
+                  if (_loading)
+                    const Center(
+                      child: CircularProgressIndicator(),
+                    ),
                   const XDivider(text: 'OR'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       SocialIcon(
                         iconPath: "assets/icons/facebook.png",
-                        onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                              content: Text(
-                                  'Sorry .·´¯`(>▂<)´¯`·.  Facebook login is under developing')));
+                        onTap: () async {
+                          isLoading(true);
+                          await login.signInWithFacebook(context);
+                          isLoading(false);
                         },
                       ),
                       SocialIcon(
                         iconPath: "assets/icons/google.png",
-                        onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                              content: Text(
-                                  'Sorry .·´¯`(>▂<)´¯`·.  Google login is under developing')));
+                        onTap: () async {
+                          isLoading(true);
+                          await login.signInWithGoogle(context);
+                          isLoading(false);
                         },
                       ),
                     ],
