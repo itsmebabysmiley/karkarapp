@@ -30,7 +30,7 @@ class _LogInPageState extends State<LogInPage> {
     _passwordController.dispose();
     super.dispose();
   }
-  void isLoadin(bool staus){
+  void isLoading(bool staus){
     setState(() {
       _loading = staus;
     });
@@ -84,10 +84,10 @@ class _LogInPageState extends State<LogInPage> {
                     RoundedButton(
                       text: 'LOGIN',
                       onPressed: () async {
-                        isLoadin(true);
+                        isLoading(true);
                         await login.singInWithEmail(_emailController.text,
                             _passwordController.text, context);
-                        isLoadin(false);
+                        isLoading(false);
                       },
                     ),
                   if (_loading)
@@ -101,17 +101,17 @@ class _LogInPageState extends State<LogInPage> {
                       SocialIcon(
                         iconPath: "assets/icons/facebook.png",
                         onTap: () async {
-                          isLoadin(true);
+                          isLoading(true);
                           await login.signInWithFacebook(context);
-                          isLoadin(false);
+                          isLoading(false);
                         }
                       ),
                       SocialIcon(
                         iconPath: "assets/icons/google.png",
                         onTap: () async {
-                          isLoadin(true);
+                          isLoading(true);
                           await login.signInWithGoogle(context);
-                          isLoadin(false);
+                          isLoading(false);
                         },
                       ),
                     ],
