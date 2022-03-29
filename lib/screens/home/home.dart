@@ -119,12 +119,12 @@ class HomeScreen extends StatelessWidget {
               children: List.generate(
                 recommendProducts.length,
                 (index) => CardItemMedium(
-                  product: maylikeProducts[index],
+                  product: mayLike[index],
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => DetailScreen(
-                          product: maylikeProducts[index],
+                          product: mayLike[index],
                         ),
                       )),
                 ),
@@ -142,15 +142,15 @@ class HomeScreen extends StatelessWidget {
             scrollDirection: Axis.vertical,
             child: Column(
               children: List.generate(
-                maylikeProducts.length,
+                forYou.length,
                 (index) => CardItemWide(
-                  product: maylikeProducts[index],
+                  product: forYou[index],
                   onTap: () => {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            DetailScreen(product: maylikeProducts[index]),
+                            DetailScreen(product: forYou[index]),
                       ),
                     ),
                   },
