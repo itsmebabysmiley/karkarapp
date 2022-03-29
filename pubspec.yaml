@@ -41,6 +41,15 @@ dependencies:
   firebase_auth: ^3.3.10
   flutter_facebook_auth: ^4.1.1
   google_sign_in: ^5.2.4
+  flutter_native_splash: ^2.1.2+1
+
+# After adding your settings, run the following command in the terminal:
+# flutter clean
+# flutter pub get
+# flutter pub run flutter_native_splash:create
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/logo/karkar_3.png
 
 dev_dependencies:
   flutter_test:
