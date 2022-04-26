@@ -37,12 +37,6 @@ class Login {
 
       final userData = await FacebookAuth.instance.getUserData();
 
-      // Keep a copy of user //* Maybe I don't need it.
-      // await FirebaseFirestore.instance.collection('users').add({
-      //   'email': userData['email'],
-      //   'imageUrl': userData['picture']['data']['url'],
-      //   'name': userData['name'],
-      // });
 
       // Update user photoURL, since it's Facebook, not Google. 
       final User user = FirebaseAuth.instance.currentUser!;
@@ -75,12 +69,6 @@ class Login {
       // Sign in into Firebase
       await FirebaseAuth.instance.signInWithCredential(credential);
 
-      // Keep a copy of user. //* Maybe I don't need it.
-      // await FirebaseFirestore.instance.collection('users').add({
-      //   'email': googleUser?.email,
-      //   'imageUrl': googleUser?.photoUrl,
-      //   'name': googleUser?.displayName,
-      // });
 
       // If success log in, route to homepage.
       Navigator.push(
